@@ -3,6 +3,7 @@ package br.com.isaquebrb.customerchallenge.adapter.filter;
 import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Predicate;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class CustomerFilter {
 

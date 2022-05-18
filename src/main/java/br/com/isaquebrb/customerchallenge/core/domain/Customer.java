@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class Customer {
+public class Customer extends Interval {
 
     private Long id;
     private String name;

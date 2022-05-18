@@ -1,12 +1,10 @@
 package br.com.isaquebrb.customerchallenge.adapter.repository.entity;
 
-import br.com.isaquebrb.customerchallenge.core.domain.Customer;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
-public class AddressEntity {
+public class AddressEntity extends IntervalEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +29,9 @@ public class AddressEntity {
     @Column(name = "country")
     private String country;
 
+    @Column(name = "zip_code")
+    private String zipCode;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    private Customer customer;
+    private CustomerEntity customer;
 }

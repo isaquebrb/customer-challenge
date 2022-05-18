@@ -26,7 +26,6 @@ public class CustomerController {
         return ResponseEntity.ok(createCustomerUseCase.create(customerRequest));
     }
 
-
     @GetMapping
     public ResponseEntity<Page<CustomerResponse>> getAllCustomers(
             Pageable pageable,

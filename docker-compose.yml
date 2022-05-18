@@ -5,9 +5,9 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_DB: customerdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: customer_challenge
+      POSTGRES_USER: customer
+      POSTGRES_PASSWORD: challenge
     ports:
       - "5432:5432"
 

@@ -1,0 +1,13 @@
+spring:
+  ### Database ###
+  datasource:
+    url: jdbc:postgresql://localhost:5432/customer_challenge
+    username: customer
+    password: challenge
+    ### JPA options ###
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL92Dialect
+    hibernate:
+      ddl-auto: none #does not delete data when restart
+    open-in-view: false #disable OSIV and log alert
+    generate-ddl: false #disable automatic database creation
