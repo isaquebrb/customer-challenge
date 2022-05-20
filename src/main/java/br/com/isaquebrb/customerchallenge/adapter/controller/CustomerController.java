@@ -3,6 +3,7 @@ package br.com.isaquebrb.customerchallenge.adapter.controller;
 import br.com.isaquebrb.customerchallenge.adapter.filter.CustomerFilter;
 import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CreateCustomerRequest;
 import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CreateCustomerResponse;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.response.GetAllCustomerResponse;
 import br.com.isaquebrb.customerchallenge.core.service.CreateCustomerUseCase;
 import br.com.isaquebrb.customerchallenge.core.service.GetAllCustomersUseCase;
 import br.com.isaquebrb.customerchallenge.core.service.UpdateCustomerUseCase;
@@ -29,15 +30,15 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<CreateCustomerResponse>> getAllCustomers(
+    public ResponseEntity<Page<GetAllCustomerResponse>> getAllCustomers(
             Pageable pageable,
+            @RequestParam(value = "id", required = false) Long id,
             @RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "age", required = false) Integer age,
             @RequestParam(value = "email", required = false) String email,
             @RequestParam(value = "active", required = false) Boolean active) {
 
-        CustomerFilter customerFilter = new CustomerFilter(name, age, email, active);
-        return ResponseEntity.ok(getAllCustomersUseCase.getAll(pageable, customerFilter.getSpecification()));
+        CustomerFilter customerFilter = new CustomerFilter(id, name, email, active);
+        return ResponseEntity.ok(getAllCustomersUseCase.getAll(pageable, customerFilter));
     }
 
 }

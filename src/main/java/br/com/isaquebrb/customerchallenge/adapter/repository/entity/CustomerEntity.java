@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,8 +33,10 @@ public class CustomerEntity extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "customer",
-            orphanRemoval = true)
-    private List<AddressEntity> addresses;
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    @Builder.Default
+    private List<AddressEntity> addresses = new ArrayList<>();
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -46,6 +49,11 @@ public class CustomerEntity extends BaseEntity {
 
     @Column(name = "active")
     private Boolean active;
+
+    public void addAddress(AddressEntity addressEntity) {
+        addresses.add(addressEntity);
+        addressEntity.setCustomer(this);
+    }
 
     public Customer toDomain() {
         List<Address> addressesDomain = addresses.stream()

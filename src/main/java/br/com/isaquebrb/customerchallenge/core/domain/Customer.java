@@ -25,13 +25,15 @@ public class Customer extends BaseDomain {
                 .map(Address::toEntity)
                 .toList();
 
-        return CustomerEntity.builder()
+        CustomerEntity customerEntity = CustomerEntity.builder()
                 .name(name)
                 .age(age)
-                .addresses(addressEntities)
                 .email(email)
                 .cellphone(cellphone)
                 .phone(phone)
                 .active(active).build();
+
+        addressEntities.forEach(customerEntity::addAddress);
+        return customerEntity;
     }
 }

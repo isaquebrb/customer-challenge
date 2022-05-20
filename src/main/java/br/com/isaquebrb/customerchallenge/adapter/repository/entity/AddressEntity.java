@@ -58,4 +58,8 @@ public class AddressEntity extends BaseEntity {
                 .updatedAt(updatedAt)
                 .build();
     }
+
+    public void setCustomer(CustomerEntity customerEntity) {
+        customer = customerEntity;
+    }
 }
