@@ -1,13 +1,22 @@
 package br.com.isaquebrb.customerchallenge.adapter.repository.entity;
 
+import br.com.isaquebrb.customerchallenge.core.domain.Address;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
-public class AddressEntity extends IntervalEntity {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AddressEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
+    @SequenceGenerator(name = "address_seq", sequenceName = "address_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -34,4 +43,19 @@ public class AddressEntity extends IntervalEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CustomerEntity customer;
+
+    public Address toDomain() {
+        return Address.builder()
+                .id(id)
+                .street(street)
+                .number(number)
+                .district(district)
+                .city(city)
+                .state(state)
+                .country(country)
+                .zipCode(zipCode)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
 }

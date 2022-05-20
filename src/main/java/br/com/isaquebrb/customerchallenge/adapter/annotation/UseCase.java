@@ -1,4 +1,4 @@
-package br.com.isaquebrb.customerchallenge.commom.annotation;
+package br.com.isaquebrb.customerchallenge.adapter.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface PersistenceAdapter {
+public @interface UseCase {
 
     /**
      * The value may indicate a suggestion for a logical component name,

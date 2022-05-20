@@ -1,3 +1,15 @@
+create table if not exists customer (
+    id bigint primary key,
+    name varchar(100) not null,
+    age integer,
+    email varchar(255) not null unique,
+    cellphone varchar(50),
+    phone varchar(50),
+    created_at timestamp default current_timestamp not null,
+    updated_at timestamp,
+    active boolean
+);
+
 create table if not exists address   (
     id bigint primary key,
     street varchar(255),
@@ -7,19 +19,11 @@ create table if not exists address   (
     state varchar(255),
     country varchar(255),
     zip_code varchar(255),
-    created_at timestamp default current_timestamp,
-    updated_at timestamp
+    customer_id bigint,
+    created_at timestamp default current_timestamp not null,
+    updated_at timestamp,
+    constraint fk_customer foreign key(customer_id) references customer(id)
 );
 
-create table if not exists customer (
-    id bigint primary key,
-    name varchar(100) not null,
-    age integer,
-    email varchar(255) not null,
-    celphone varchar(50),
-    phone varchar(50),
-    address_id bigint,
-    created_at timestamp default current_timestamp,
-    updated_at timestamp,
-    constraint fk_address foreign key(address_id) references address(id)
-);
+create sequence customer_id_seq;
+create sequence address_id_seq;

@@ -1,14 +1,11 @@
-package br.com.isaquebrb.customerchallenge.core.domain;
+package br.com.isaquebrb.customerchallenge.adapter.presenter.request;
 
-import br.com.isaquebrb.customerchallenge.adapter.repository.entity.AddressEntity;
+import br.com.isaquebrb.customerchallenge.core.domain.Address;
 import lombok.Getter;
-import lombok.experimental.SuperBuilder;
 
 @Getter
-@SuperBuilder
-public class Address extends BaseDomain {
+public class AddressRequest {
 
-    private Long id;
     private String street;
     private Integer number;
     private String district;
@@ -17,14 +14,15 @@ public class Address extends BaseDomain {
     private String country;
     private String zipCode;
 
-    public AddressEntity toEntity() {
-        return AddressEntity.builder()
+    public Address newAddress() {
+        return Address.builder()
                 .street(street)
                 .number(number)
                 .district(district)
                 .city(city)
                 .state(state)
                 .country(country)
-                .zipCode(zipCode).build();
+                .zipCode(zipCode)
+                .build();
     }
 }

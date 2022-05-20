@@ -8,6 +8,5 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL92Dialect
     hibernate:
-      ddl-auto: none #does not delete data when restart
+      ddl-auto: create-drop #none #does not delete data when restart
     open-in-view: false #disable OSIV and log alert
-    generate-ddl: false #disable automatic database creation

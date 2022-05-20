@@ -1,11 +1,15 @@
 package br.com.isaquebrb.customerchallenge.core.domain;
 
+import br.com.isaquebrb.customerchallenge.adapter.repository.entity.AddressEntity;
+import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Getter
-public class Customer extends Interval {
+@SuperBuilder
+public class Customer extends BaseDomain {
 
     private Long id;
     private String name;
@@ -16,4 +20,18 @@ public class Customer extends Interval {
     private String phone;
     private Boolean active;
 
+    public CustomerEntity toEntity() {
+        List<AddressEntity> addressEntities = addresses.stream()
+                .map(Address::toEntity)
+                .toList();
+
+        return CustomerEntity.builder()
+                .name(name)
+                .age(age)
+                .addresses(addressEntities)
+                .email(email)
+                .cellphone(cellphone)
+                .phone(phone)
+                .active(active).build();
+    }
 }
