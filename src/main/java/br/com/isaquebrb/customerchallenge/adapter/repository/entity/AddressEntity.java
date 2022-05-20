@@ -1,6 +1,7 @@
 package br.com.isaquebrb.customerchallenge.adapter.repository.entity;
 
 import br.com.isaquebrb.customerchallenge.core.domain.Address;
+import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -43,10 +44,10 @@ public class AddressEntity extends BaseEntity {
     private String zipCode;
 
     @Setter
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private CustomerEntity customer;
 
-    public Address toDomain() {
+    public Address toDomain(Customer customer) {
         return Address.builder()
                 .id(id)
                 .street(street)
@@ -56,6 +57,7 @@ public class AddressEntity extends BaseEntity {
                 .state(state)
                 .country(country)
                 .zipCode(zipCode)
+                .customer(customer)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();

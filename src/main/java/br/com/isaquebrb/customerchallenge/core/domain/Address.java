@@ -1,7 +1,9 @@
 package br.com.isaquebrb.customerchallenge.core.domain;
 
 import br.com.isaquebrb.customerchallenge.adapter.repository.entity.AddressEntity;
+import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @Getter
@@ -17,7 +19,10 @@ public class Address extends BaseDomain {
     private String country;
     private String zipCode;
 
-    public AddressEntity toEntity() {
+    @Setter
+    private Customer customer;
+
+    public AddressEntity newEntity(CustomerEntity customerEntity) {
         return AddressEntity.builder()
                 .street(street)
                 .number(number)
@@ -25,6 +30,7 @@ public class Address extends BaseDomain {
                 .city(city)
                 .state(state)
                 .country(country)
-                .zipCode(zipCode).build();
+                .zipCode(zipCode)
+                .customer(customerEntity).build();
     }
 }

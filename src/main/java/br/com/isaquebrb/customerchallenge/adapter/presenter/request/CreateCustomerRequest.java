@@ -1,12 +1,12 @@
 package br.com.isaquebrb.customerchallenge.adapter.presenter.request;
 
-import br.com.isaquebrb.customerchallenge.core.domain.Address;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import lombok.Getter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -15,7 +15,7 @@ public class CreateCustomerRequest {
     @NotBlank
     private String name;
     private Integer age;
-    private List<CreateAddressRequest> addresses;
+    private final List<CreateAddressRequest> addresses = new ArrayList<>();
 
     @NotNull
     @Email
@@ -24,19 +24,20 @@ public class CreateCustomerRequest {
     private String phone;
 
     public Customer newCustomer() {
-        List<Address> newAddresses = addresses.stream()
-                .map(CreateAddressRequest::newAddress)
-                .toList();
-
-        return Customer.builder()
+        Customer newCustomer = Customer.builder()
                 .name(name)
                 .age(age)
-                .addresses(newAddresses)
                 .email(email)
                 .cellphone(cellphone)
                 .phone(phone)
                 .active(Boolean.TRUE)
                 .build();
+
+        addresses.stream()
+                .map(CreateAddressRequest::newAddress)
+                .forEach(newCustomer::addAddress);
+
+        return newCustomer;
     }
 
 }

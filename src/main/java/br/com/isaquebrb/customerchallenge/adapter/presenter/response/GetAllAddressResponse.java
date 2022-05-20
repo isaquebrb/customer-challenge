@@ -1,9 +1,12 @@
 package br.com.isaquebrb.customerchallenge.adapter.presenter.response;
 
 import br.com.isaquebrb.customerchallenge.core.domain.Address;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 
 @Getter
+@JsonPropertyOrder({"id", "street", "number", "district", "city",
+        "state", "country", "zipCode", "createdAt", "updatedAt"})
 public class GetAllAddressResponse extends BaseResponse {
 
     private final Long id;

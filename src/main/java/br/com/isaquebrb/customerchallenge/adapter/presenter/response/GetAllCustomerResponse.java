@@ -1,11 +1,14 @@
 package br.com.isaquebrb.customerchallenge.adapter.presenter.response;
 
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
+@JsonPropertyOrder({"id", "name", "age", "addresses", "email",
+        "cellphone", "phone", "active", "createdAt", "updatedAt"})
 public class GetAllCustomerResponse extends BaseResponse {
 
     private final Long id;

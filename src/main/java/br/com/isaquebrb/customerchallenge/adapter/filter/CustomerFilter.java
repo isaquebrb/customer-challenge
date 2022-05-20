@@ -3,7 +3,6 @@ package br.com.isaquebrb.customerchallenge.adapter.filter;
 import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Predicate;
@@ -11,21 +10,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 public class CustomerFilter {
 
-    private Long id;
-    private String name;
-    private String email;
-    private Boolean active;
+    private final Long id;
+    private final String name;
+    private final String email;
+    private final Boolean active;
 
     public Specification<CustomerEntity> getSpecification() {
         List<Predicate> predicates = new ArrayList<>();
         return ((root, query, criteriaBuilder) -> {
-            if (this.active != null) {
-                predicates.add(criteriaBuilder.equal(root.get("active"), this.active));
+            if (id != null) {
+                predicates.add(criteriaBuilder.equal(root.get("id"), id));
             }
+
+            if (name != null) {
+                predicates.add(criteriaBuilder.equal(root.get("name"), name));
+            }
+
+            if (email != null) {
+                predicates.add(criteriaBuilder.equal(root.get("email"), email));
+            }
+
+            if (active != null) {
+                predicates.add(criteriaBuilder.equal(root.get("active"), active));
+            }
+
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         });
     }
