@@ -35,8 +35,7 @@ public class CustomerEntity extends BaseEntity {
             mappedBy = "customer",
             orphanRemoval = true,
             fetch = FetchType.EAGER)
-    @Builder.Default
-    private List<AddressEntity> addresses = new ArrayList<>();
+    private final List<AddressEntity> addresses = new ArrayList<>();
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;

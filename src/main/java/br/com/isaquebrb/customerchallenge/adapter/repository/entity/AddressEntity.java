@@ -4,6 +4,7 @@ import br.com.isaquebrb.customerchallenge.core.domain.Address;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -41,6 +42,7 @@ public class AddressEntity extends BaseEntity {
     @Column(name = "zip_code")
     private String zipCode;
 
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     private CustomerEntity customer;
 
@@ -57,9 +59,5 @@ public class AddressEntity extends BaseEntity {
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
-    }
-
-    public void setCustomer(CustomerEntity customerEntity) {
-        customer = customerEntity;
     }
 }
