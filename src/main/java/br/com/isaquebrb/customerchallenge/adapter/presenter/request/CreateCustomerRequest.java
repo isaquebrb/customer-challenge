@@ -1,6 +1,7 @@
 package br.com.isaquebrb.customerchallenge.adapter.presenter.request;
 
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.Email;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Builder
 public class CreateCustomerRequest {
 
     @NotBlank

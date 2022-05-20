@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @JsonPropertyOrder({"id", "street", "number", "district", "city",
         "state", "country", "zipCode", "createdAt", "updatedAt"})
-public class GetAllAddressResponse extends BaseResponse {
+public class GetAddressResponse extends BaseResponse {
 
     private final Long id;
     private final String street;
@@ -18,7 +18,7 @@ public class GetAllAddressResponse extends BaseResponse {
     private final String country;
     private final String zipCode;
 
-    public GetAllAddressResponse(Address address) {
+    public GetAddressResponse(Address address) {
         id = address.getId();
         street = address.getStreet();
         number = address.getNumber();

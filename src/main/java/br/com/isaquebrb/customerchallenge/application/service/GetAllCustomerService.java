@@ -2,7 +2,7 @@ package br.com.isaquebrb.customerchallenge.application.service;
 
 import br.com.isaquebrb.customerchallenge.adapter.annotation.UseCase;
 import br.com.isaquebrb.customerchallenge.adapter.filter.CustomerFilter;
-import br.com.isaquebrb.customerchallenge.adapter.presenter.response.GetAllCustomerResponse;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.response.GetCustomerResponse;
 import br.com.isaquebrb.customerchallenge.core.persistence.GetAllCustomerPersistence;
 import br.com.isaquebrb.customerchallenge.core.service.GetAllCustomersUseCase;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +19,10 @@ public class GetAllCustomerService implements GetAllCustomersUseCase {
     private final GetAllCustomerPersistence getAllCustomerPersistence;
 
     @Override
-    public Page<GetAllCustomerResponse> getAll(Pageable pageable, CustomerFilter customerFilter) {
-        List<GetAllCustomerResponse> customersFound =
+    public Page<GetCustomerResponse> getAll(Pageable pageable, CustomerFilter customerFilter) {
+        List<GetCustomerResponse> customersFound =
                 getAllCustomerPersistence.getAll(pageable, customerFilter).stream()
-                        .map(GetAllCustomerResponse::new).toList();
+                        .map(GetCustomerResponse::new).toList();
 
         return new PageImpl<>(customersFound, pageable, customersFound.size());
     }

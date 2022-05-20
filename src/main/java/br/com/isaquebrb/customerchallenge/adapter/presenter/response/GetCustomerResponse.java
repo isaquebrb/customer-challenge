@@ -9,23 +9,23 @@ import java.util.List;
 @Getter
 @JsonPropertyOrder({"id", "name", "age", "addresses", "email",
         "cellphone", "phone", "active", "createdAt", "updatedAt"})
-public class GetAllCustomerResponse extends BaseResponse {
+public class GetCustomerResponse extends BaseResponse {
 
     private final Long id;
     private final String name;
     private final Integer age;
-    private final List<GetAllAddressResponse> addresses;
+    private final List<GetAddressResponse> addresses;
     private final String email;
     private final String cellphone;
     private final String phone;
     private final Boolean active;
 
-    public GetAllCustomerResponse(Customer customer) {
+    public GetCustomerResponse(Customer customer) {
         id = customer.getId();
         name = customer.getName();
         age = customer.getAge();
         addresses = customer.getAddresses().stream()
-                .map(GetAllAddressResponse::new)
+                .map(GetAddressResponse::new)
                 .toList();
         email = customer.getEmail();
         cellphone = customer.getCellphone();
