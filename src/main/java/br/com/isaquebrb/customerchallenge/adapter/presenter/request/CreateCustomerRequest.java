@@ -10,12 +10,12 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
-public class CustomerRequest {
+public class CreateCustomerRequest {
 
     @NotBlank
     private String name;
     private Integer age;
-    private List<AddressRequest> addresses;
+    private List<CreateAddressRequest> addresses;
 
     @NotNull
     @Email
@@ -25,7 +25,7 @@ public class CustomerRequest {
 
     public Customer newCustomer() {
         List<Address> newAddresses = addresses.stream()
-                .map(AddressRequest::newAddress)
+                .map(CreateAddressRequest::newAddress)
                 .toList();
 
         return Customer.builder()

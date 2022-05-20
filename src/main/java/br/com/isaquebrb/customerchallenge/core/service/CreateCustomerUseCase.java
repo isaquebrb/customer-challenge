@@ -1,9 +1,9 @@
 package br.com.isaquebrb.customerchallenge.core.service;
 
-import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CustomerRequest;
-import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CustomerResponse;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CreateCustomerRequest;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CreateCustomerResponse;
 
 public interface CreateCustomerUseCase {
 
-    CustomerResponse create(CustomerRequest customerRequest);
+    CreateCustomerResponse create(CreateCustomerRequest customerRequest);
 }

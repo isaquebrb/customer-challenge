@@ -1,8 +1,8 @@
 package br.com.isaquebrb.customerchallenge.adapter.controller;
 
 import br.com.isaquebrb.customerchallenge.adapter.filter.CustomerFilter;
-import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CustomerRequest;
-import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CustomerResponse;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CreateCustomerRequest;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CreateCustomerResponse;
 import br.com.isaquebrb.customerchallenge.core.service.CreateCustomerUseCase;
 import br.com.isaquebrb.customerchallenge.core.service.GetAllCustomersUseCase;
 import br.com.isaquebrb.customerchallenge.core.service.UpdateCustomerUseCase;
@@ -24,12 +24,12 @@ public class CustomerController {
     private final UpdateCustomerUseCase updateCustomerUseCase;
 
     @PostMapping
-    public ResponseEntity<CustomerResponse> createCustomer(@RequestBody @Valid CustomerRequest customerRequest) {
+    public ResponseEntity<CreateCustomerResponse> createCustomer(@RequestBody @Valid CreateCustomerRequest customerRequest) {
         return ResponseEntity.ok(createCustomerUseCase.create(customerRequest));
     }
 
     @GetMapping
-    public ResponseEntity<Page<CustomerResponse>> getAllCustomers(
+    public ResponseEntity<Page<CreateCustomerResponse>> getAllCustomers(
             Pageable pageable,
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "age", required = false) Integer age,

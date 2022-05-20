@@ -1,6 +1,6 @@
 package br.com.isaquebrb.customerchallenge.application.service;
 
-import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CustomerResponse;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CreateCustomerResponse;
 import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.adapter.annotation.UseCase;
 import br.com.isaquebrb.customerchallenge.core.persistence.GetAllCustomerPersistence;
@@ -17,7 +17,7 @@ public class GetAllCustomerService implements GetAllCustomersUseCase {
     private final GetAllCustomerPersistence getAllCustomerPersistence;
 
     @Override
-    public Page<CustomerResponse> getAll(Pageable pageable, Specification<CustomerEntity> specification) {
+    public Page<CreateCustomerResponse> getAll(Pageable pageable, Specification<CustomerEntity> specification) {
         Page<CustomerEntity> customersFound = getAllCustomerPersistence.getAll(pageable, specification);
         return Page.empty();
     }

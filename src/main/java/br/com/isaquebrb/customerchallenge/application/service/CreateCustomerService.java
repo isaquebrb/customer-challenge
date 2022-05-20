@@ -1,7 +1,7 @@
 package br.com.isaquebrb.customerchallenge.application.service;
 
-import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CustomerRequest;
-import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CustomerResponse;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CreateCustomerRequest;
+import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CreateCustomerResponse;
 import br.com.isaquebrb.customerchallenge.adapter.annotation.UseCase;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import br.com.isaquebrb.customerchallenge.core.persistence.CreateCustomerPersistence;
@@ -15,8 +15,8 @@ public class CreateCustomerService implements CreateCustomerUseCase {
     private final CreateCustomerPersistence createCustomerPersistence;
 
     @Override
-    public CustomerResponse create(CustomerRequest customerRequest) {
+    public CreateCustomerResponse create(CreateCustomerRequest customerRequest) {
         Customer customer = customerRequest.newCustomer();
-        return new CustomerResponse(createCustomerPersistence.save(customer));
+        return new CreateCustomerResponse(createCustomerPersistence.save(customer));
     }
 }

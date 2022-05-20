@@ -4,7 +4,7 @@ import br.com.isaquebrb.customerchallenge.core.domain.Address;
 import lombok.Getter;
 
 @Getter
-public class AddressRequest {
+public class CreateAddressRequest {
 
     private String street;
     private Integer number;
