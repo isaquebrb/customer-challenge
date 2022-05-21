@@ -1,12 +1,10 @@
 package br.com.isaquebrb.customerchallenge.core.persistence;
 
-import br.com.isaquebrb.customerchallenge.adapter.filter.CustomerFilter;
+import br.com.isaquebrb.customerchallenge.core.pagination.SimplePage;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
+import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 
 public interface GetAllCustomerPersistence {
 
-    List<Customer> getAll(Pageable pageable, CustomerFilter customerFilter);
+    SimplePage<Customer> getAll(Integer page, Integer size, CustomerFilter customerFilter);
 }

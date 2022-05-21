@@ -16,8 +16,8 @@ public class CreateCustomerRepository implements CreateCustomerPersistence {
     private final JpaCustomerRepository jpaCustomerRepository;
 
     @Override
-    public Customer save(Customer customer) {
-        CustomerEntity customerEntity = customer.newEntity();
+    public Customer save(Customer customerRequest) {
+        CustomerEntity customerEntity = customerRequest.newEntity();
         return jpaCustomerRepository.save(customerEntity).toDomain();
     }
 }

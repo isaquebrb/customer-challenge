@@ -4,5 +4,5 @@ import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 
 public interface CreateCustomerPersistence {
 
-    Customer save(Customer customer);
+    Customer save(Customer customerRequest);
 }

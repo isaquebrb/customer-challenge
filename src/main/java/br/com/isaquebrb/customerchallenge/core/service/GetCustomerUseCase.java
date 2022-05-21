@@ -1,8 +1,8 @@
 package br.com.isaquebrb.customerchallenge.core.service;
 
-import br.com.isaquebrb.customerchallenge.adapter.presenter.response.GetCustomerResponse;
+import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 
 public interface GetCustomerUseCase {
 
-    GetCustomerResponse getById(Long id);
+    Customer getById(Long id);
 }
