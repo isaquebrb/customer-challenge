@@ -7,7 +7,7 @@ import br.com.isaquebrb.customerchallenge.adapter.presenter.response.GetCustomer
 import br.com.isaquebrb.customerchallenge.adapter.presenter.response.UpdateCustomerResponse;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
-import br.com.isaquebrb.customerchallenge.core.pagination.SimplePage;
+import br.com.isaquebrb.customerchallenge.core.pagination.Page;
 import br.com.isaquebrb.customerchallenge.core.service.CreateCustomerUseCase;
 import br.com.isaquebrb.customerchallenge.core.service.GetAllCustomersUseCase;
 import br.com.isaquebrb.customerchallenge.core.service.GetCustomerUseCase;
@@ -45,7 +45,7 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<SimplePage<GetCustomerResponse>> getAllCustomers(
+    public ResponseEntity<Page<GetCustomerResponse>> getAllCustomers(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
             @RequestParam(value = "name", required = false) String name,
@@ -54,7 +54,7 @@ public class CustomerController {
             @RequestParam(value = "active", required = false) Boolean active) {
 
         CustomerFilter customerFilter = new CustomerFilter(name, age, email, active);
-        SimplePage<Customer> customersFound = getAllCustomersUseCase.getAll(page, size, customerFilter);
+        Page<Customer> customersFound = getAllCustomersUseCase.getAll(page, size, customerFilter);
         return ResponseEntity.ok(GetCustomerResponse.mapPageTo(customersFound));
     }
 

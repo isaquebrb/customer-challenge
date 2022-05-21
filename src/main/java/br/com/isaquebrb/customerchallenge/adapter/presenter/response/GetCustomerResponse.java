@@ -1,7 +1,7 @@
 package br.com.isaquebrb.customerchallenge.adapter.presenter.response;
 
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
-import br.com.isaquebrb.customerchallenge.core.pagination.SimplePage;
+import br.com.isaquebrb.customerchallenge.core.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 
@@ -36,12 +36,12 @@ public class GetCustomerResponse extends BaseResponse {
         updatedAt = customer.getUpdatedAt();
     }
 
-    public static SimplePage<GetCustomerResponse> mapPageTo(SimplePage<Customer> customerPage) {
+    public static Page<GetCustomerResponse> mapPageTo(Page<Customer> customerPage) {
         List<GetCustomerResponse> customersResponse = customerPage.getContent().stream()
                 .map(GetCustomerResponse::new)
                 .toList();
 
-        return new SimplePage<>(customersResponse,
+        return new Page<>(customersResponse,
                 customerPage.getPageable().getPageNumber(),
                 customerPage.getPageable().getPageSize(),
                 customerPage.getPageable().getTotalElements());
