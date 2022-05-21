@@ -29,6 +29,14 @@ public interface CustomerSpecification {
                 predicates.add(criteriaBuilder.equal(root.get("active"), customerFilter.getActive()));
             }
 
+            if (customerFilter.getCellphone() != null) {
+                predicates.add(criteriaBuilder.equal(root.get("cellphone"), customerFilter.getCellphone()));
+            }
+
+            if (customerFilter.getPhone() != null) {
+                predicates.add(criteriaBuilder.equal(root.get("phone"), customerFilter.getPhone()));
+            }
+
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         });
     }

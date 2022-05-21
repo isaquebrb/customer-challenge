@@ -72,4 +72,19 @@ public class CustomerEntity extends BaseEntity {
 
         return customer;
     }
+
+    public void update(String name, Integer age, String cellphone, String phone) {
+        this.name = name;
+        this.age = age;
+        this.cellphone = cellphone;
+        this.phone = phone;
+    }
+
+    public void updateEmail(String email) {
+        this.email = email;
+    }
+
+    public void updateActivation(boolean active) {
+        this.active = active;
+    }
 }

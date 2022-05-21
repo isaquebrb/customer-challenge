@@ -1,10 +1,10 @@
 package br.com.isaquebrb.customerchallenge.core.service;
 
-import br.com.isaquebrb.customerchallenge.core.domain.Customer;
-
 public interface UpdateCustomerUseCase {
 
-    Customer update(String name, Integer age, String cellphone, String phone);
+    void update(Long customerId, String name, Integer age, String cellphone, String phone);
 
-    Customer updateEmail(String email);
+    void updateEmail(Long customerId, String email);
+
+    void updateActivation(Long customerId, boolean active);
 }

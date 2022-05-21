@@ -5,12 +5,12 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class Page<T> {
+public class SimplePage<T> {
 
     private final List<T> content;
     private final Pageable pageable;
 
-    public Page(List<T> content, Integer pageNumber, Integer pageSize, Long totalElements) {
+    public SimplePage(List<T> content, Integer pageNumber, Integer pageSize, Long totalElements) {
         this.content = content;
         this.pageable = new Pageable(pageNumber, pageSize, content.size(), totalElements);
     }
