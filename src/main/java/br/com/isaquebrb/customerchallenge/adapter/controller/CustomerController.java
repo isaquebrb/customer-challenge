@@ -58,8 +58,8 @@ public class CustomerController {
             @RequestParam(value = "active", required = false) Boolean active) {
 
         CustomerFilter customerFilter = new CustomerFilter(name, age, email, cellphone, phone, active);
-        SimplePage<Customer> customersFound = getAllCustomersUseCase.getAll(page, size, customerFilter);
-        return ResponseEntity.ok(GetCustomerResponse.mapPageTo(customersFound));
+        SimplePage<Customer> customersPage = getAllCustomersUseCase.getAll(page, size, customerFilter);
+        return ResponseEntity.ok(GetCustomerResponse.mapPageTo(customersPage));
     }
 
     @PatchMapping("/{id}")

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class CreateCustomerRequest {
 
     @NotBlank
     private String name;
+
+    @Min(value = 18, message = "Client age must be at least 18")
     private Integer age;
     private final List<CreateAddressRequest> addresses = new ArrayList<>();
 
