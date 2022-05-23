@@ -11,3 +11,8 @@ spring:
       ddl-auto: none #does not delete data when restart
     open-in-view: false #disable OSIV and log alert
     generate-ddl: false #disable automatic database creation
+  ### Monitoring ###
+management:
+  endpoint:
+    health:
+      show-details: always
