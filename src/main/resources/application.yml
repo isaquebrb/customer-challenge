@@ -1,7 +1,7 @@
 spring:
   ### Database ###
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer_challenge
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/customer_challenge}
     username: customer
     password: challenge
     ### JPA options ###
