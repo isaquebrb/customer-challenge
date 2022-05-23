@@ -57,4 +57,15 @@ public class ControllerAdviceHandler {
 
         return new ResponseEntity<>(new StandardErrorResponse(status.value(), title, message), status);
     }
+
+    @ExceptionHandler(Exception.class)
+    private ResponseEntity<StandardErrorResponse> handleGenericException(Exception ex) {
+        log.error("Generic error.", ex);
+
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        String title = "Generic error.";
+        String message = ex.getMessage();
+
+        return new ResponseEntity<>(new StandardErrorResponse(status.value(), title, message), status);
+    }
 }

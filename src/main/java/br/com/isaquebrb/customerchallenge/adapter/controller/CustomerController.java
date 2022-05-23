@@ -18,22 +18,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/customer")
-public class CustomerController {
+public class CustomerController implements CustomerControllerApi {
 
     private final CreateCustomerUseCase createCustomerUseCase;
     private final GetCustomerUseCase getCustomerUseCase;
     private final GetAllCustomersUseCase getAllCustomersUseCase;
     private final UpdateCustomerUseCase updateCustomerUseCase;
 
+    @Override
     @PostMapping
-    public ResponseEntity<CreateCustomerResponse> createCustomer(
-            @RequestBody @Valid CreateCustomerRequest customerRequest) {
+    public ResponseEntity<CreateCustomerResponse> createCustomer(CreateCustomerRequest customerRequest) {
 
         Customer savedCustomer = createCustomerUseCase.create(customerRequest.newCustomer());
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -41,31 +40,31 @@ public class CustomerController {
         return ResponseEntity.created(location).body(new CreateCustomerResponse(savedCustomer));
     }
 
+    @Override
     @GetMapping("/{id}")
-    public ResponseEntity<GetCustomerResponse> getById(@PathVariable("id") Long id) {
+    public ResponseEntity<GetCustomerResponse> getById(Long id) {
         return ResponseEntity.ok(new GetCustomerResponse(getCustomerUseCase.getById(id)));
     }
 
+    @Override
     @GetMapping
-    public ResponseEntity<SimplePage<GetCustomerResponse>> getAllCustomers(
-            @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "size", defaultValue = "10") int size,
-            @RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "age", required = false) Integer age,
-            @RequestParam(value = "email", required = false) String email,
-            @RequestParam(value = "cellphone", required = false) String cellphone,
-            @RequestParam(value = "phone", required = false) String phone,
-            @RequestParam(value = "active", required = false) Boolean active) {
+    public ResponseEntity<SimplePage<GetCustomerResponse>> getAllCustomers(int page,
+                                                                           int size,
+                                                                           String name,
+                                                                           Integer age,
+                                                                           String email,
+                                                                           String cellphone,
+                                                                           String phone,
+                                                                           Boolean active) {
 
         CustomerFilter customerFilter = new CustomerFilter(name, age, email, cellphone, phone, active);
         SimplePage<Customer> customersPage = getAllCustomersUseCase.getAll(page, size, customerFilter);
         return ResponseEntity.ok(GetCustomerResponse.mapPageTo(customersPage));
     }
 
+    @Override
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> updateCustomer(
-            @PathVariable("id") Long customerId,
-            @RequestBody @Valid UpdateCustomerRequest customerRequest) {
+    public ResponseEntity<Void> updateCustomer(Long customerId, UpdateCustomerRequest customerRequest) {
 
         updateCustomerUseCase.update(customerId,
                 customerRequest.getName(),
@@ -75,19 +74,17 @@ public class CustomerController {
         return ResponseEntity.ok().build();
     }
 
+    @Override
     @PatchMapping("/{id}/activation")
-    public ResponseEntity<Void> updateActivationCustomer(
-            @PathVariable("id") Long customerId,
-            @RequestBody @Valid UpdateActivationRequest activationRequest) {
+    public ResponseEntity<Void> updateActivationCustomer(Long customerId, UpdateActivationRequest activationRequest) {
 
         updateCustomerUseCase.updateActivation(customerId, activationRequest.getActive());
         return ResponseEntity.ok().build();
     }
 
+    @Override
     @PatchMapping("/{id}/email")
-    public ResponseEntity<Void> updateEmailCustomer(
-            @PathVariable("id") Long customerId,
-            @RequestBody @Valid UpdateEmailRequest emailRequest) {
+    public ResponseEntity<Void> updateEmailCustomer(Long customerId, UpdateEmailRequest emailRequest) {
 
         updateCustomerUseCase.updateEmail(customerId, emailRequest.getEmail());
         return ResponseEntity.ok().build();
