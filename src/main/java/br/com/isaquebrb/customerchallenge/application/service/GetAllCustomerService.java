@@ -7,7 +7,9 @@ import br.com.isaquebrb.customerchallenge.core.pagination.SimplePage;
 import br.com.isaquebrb.customerchallenge.core.persistence.GetAllCustomerPersistence;
 import br.com.isaquebrb.customerchallenge.core.service.GetAllCustomersUseCase;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @UseCase
 @RequiredArgsConstructor
 public class GetAllCustomerService implements GetAllCustomersUseCase {
@@ -16,6 +18,7 @@ public class GetAllCustomerService implements GetAllCustomersUseCase {
 
     @Override
     public SimplePage<Customer> getAll(Integer page, Integer size, CustomerFilter customerFilter) {
+        log.info("Searching customer page");
         return getAllCustomerPersistence.getAll(page, size, customerFilter);
     }
 }

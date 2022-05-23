@@ -9,11 +9,13 @@ import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 import br.com.isaquebrb.customerchallenge.core.pagination.SimplePage;
 import br.com.isaquebrb.customerchallenge.core.persistence.GetAllCustomerPersistence;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
+@Slf4j
 @PersistenceAdapter
 @RequiredArgsConstructor
 public class GetAllCustomerRepository implements GetAllCustomerPersistence {
@@ -28,6 +30,9 @@ public class GetAllCustomerRepository implements GetAllCustomerPersistence {
         Page<Customer> customersFoundPage =
                 jpaCustomerRepository.findAll(specification, pageable)
                         .map(CustomerEntity::toDomain);
+
+        log.info("Selected customers {}, total found of {}", customersFoundPage.getContent().size(),
+                customersFoundPage.getTotalElements());
 
         return new SimplePage<>(customersFoundPage.getContent(), customersFoundPage.getPageable().getPageNumber(),
                 customersFoundPage.getPageable().getPageSize(), customersFoundPage.getTotalElements());
