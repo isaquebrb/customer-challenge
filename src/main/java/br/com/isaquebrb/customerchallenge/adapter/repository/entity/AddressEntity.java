@@ -3,15 +3,17 @@ package br.com.isaquebrb.customerchallenge.adapter.repository.entity;
 import br.com.isaquebrb.customerchallenge.core.domain.Address;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
-@Builder
+@Getter
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddressEntity extends BaseEntity {

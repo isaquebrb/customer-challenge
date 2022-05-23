@@ -209,6 +209,4 @@ class CustomerControllerTest {
         assertThat(getAddressResponse.getCreatedAt()).isEqualTo(address.getCreatedAt());
         assertThat(getAddressResponse.getUpdatedAt()).isEqualTo(address.getUpdatedAt());
     }
-
-
 }

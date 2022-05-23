@@ -2,8 +2,10 @@ package br.com.isaquebrb.customerchallenge.core.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class CustomerFilter {
 

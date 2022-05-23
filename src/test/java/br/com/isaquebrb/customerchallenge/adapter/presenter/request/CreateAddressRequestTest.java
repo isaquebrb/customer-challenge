@@ -1,6 +1,5 @@
 package br.com.isaquebrb.customerchallenge.adapter.presenter.request;
 
-import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CreateAddressRequest;
 import br.com.isaquebrb.customerchallenge.core.domain.Address;
 import org.junit.jupiter.api.Test;
 
