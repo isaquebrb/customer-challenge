@@ -105,7 +105,7 @@ class CustomerControllerTest {
         when(getAllCustomersUseCase.getAll(anyInt(), anyInt(), any())).thenReturn(customersPage);
 
         var responseEntity = customerController.getAllCustomers(
-                page, size, null, null, null, null, null, null);
+                page, size, new CustomerFilter());
 
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -126,12 +126,14 @@ class CustomerControllerTest {
         String phone = "3432321515";
         Boolean active = true;
 
+        CustomerFilter customerFilter = new CustomerFilter(name, age, email, cellphone, phone, active);
+
         var customerList = List.of(customer, customer);
         var customersPage = new SimplePage<>(customerList, page, size, 2L);
 
-        when(getAllCustomersUseCase.getAll(anyInt(), anyInt(), any())).thenReturn(customersPage);
+        when(getAllCustomersUseCase.getAll(page, size, customerFilter)).thenReturn(customersPage);
 
-        customerController.getAllCustomers(page, size, name, age, email, cellphone, phone, active);
+        customerController.getAllCustomers(page, size, customerFilter);
 
         ArgumentCaptor<CustomerFilter> filterCaptor = ArgumentCaptor.forClass(CustomerFilter.class);
 

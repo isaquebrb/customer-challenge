@@ -7,6 +7,7 @@ import br.com.isaquebrb.customerchallenge.adapter.presenter.request.UpdateEmailR
 import br.com.isaquebrb.customerchallenge.adapter.presenter.response.CreateCustomerResponse;
 import br.com.isaquebrb.customerchallenge.adapter.presenter.response.GetCustomerResponse;
 import br.com.isaquebrb.customerchallenge.adapter.presenter.response.StandardErrorResponse;
+import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 import br.com.isaquebrb.customerchallenge.core.pagination.SimplePage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -56,12 +57,7 @@ public interface CustomerControllerApi {
     ResponseEntity<SimplePage<GetCustomerResponse>> getAllCustomers(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
-            @RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "age", required = false) Integer age,
-            @RequestParam(value = "email", required = false) String email,
-            @RequestParam(value = "cellphone", required = false) String cellphone,
-            @RequestParam(value = "phone", required = false) String phone,
-            @RequestParam(value = "active", required = false) Boolean active);
+            @RequestBody @Valid CustomerFilter customerFilter);
 
     @Operation(summary = "Update customers name, age, cellphone and phone")
     @ApiResponses(value = {

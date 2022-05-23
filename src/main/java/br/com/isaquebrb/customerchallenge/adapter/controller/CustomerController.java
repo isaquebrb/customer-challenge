@@ -50,14 +50,7 @@ public class CustomerController implements CustomerControllerApi {
     @GetMapping
     public ResponseEntity<SimplePage<GetCustomerResponse>> getAllCustomers(int page,
                                                                            int size,
-                                                                           String name,
-                                                                           Integer age,
-                                                                           String email,
-                                                                           String cellphone,
-                                                                           String phone,
-                                                                           Boolean active) {
-
-        CustomerFilter customerFilter = new CustomerFilter(name, age, email, cellphone, phone, active);
+                                                                           CustomerFilter customerFilter) {
         SimplePage<Customer> customersPage = getAllCustomersUseCase.getAll(page, size, customerFilter);
         return ResponseEntity.ok(GetCustomerResponse.mapPageTo(customersPage));
     }
