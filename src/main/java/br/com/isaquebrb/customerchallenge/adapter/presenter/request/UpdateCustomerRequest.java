@@ -13,7 +13,7 @@ public class UpdateCustomerRequest {
     @NotBlank
     private String name;
 
-    @Min(value = 18, message = "Client age must be at least 18")
+    @Min(value = 18, message = "customer age must be at least 18")
     private Integer age;
     private String cellphone;
     private String phone;
