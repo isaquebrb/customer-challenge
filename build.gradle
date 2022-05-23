@@ -35,11 +35,10 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+bootJar {
+	archiveClassifier.set('boot')
+}
+
 jar {
-	manifest {
-		attributes(
-				'Class-Path': configurations.runtimeClasspath.files.collect { it.getName() }.join(' '),
-				'Main-Class': 'br.com.isaquebrb.customerchallenge.CustomerChallengeApplication'
-		)
-	}
+	archiveClassifier.set('')
 }
