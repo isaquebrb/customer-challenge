@@ -1,6 +1,5 @@
-package br.com.isaquebrb.customerchallenge.adapter.repository.entity;
+package br.com.isaquebrb.customerchallenge.application.persistence.entity;
 
-import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,26 +50,6 @@ public class CustomerEntity extends BaseEntity {
     public void addAddress(AddressEntity addressEntity) {
         addresses.add(addressEntity);
         addressEntity.setCustomer(this);
-    }
-
-    public Customer toDomain() {
-        Customer customer = Customer.builder()
-                .id(id)
-                .name(name)
-                .age(age)
-                .email(email)
-                .cellphone(cellphone)
-                .phone(phone)
-                .active(active)
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
-                .build();
-
-        addresses.stream()
-                .map(a -> a.toDomain(customer))
-                .forEach(customer::addAddress);
-
-        return customer;
     }
 
     public void update(String name, Integer age, String cellphone, String phone) {

@@ -1,7 +1,7 @@
 package br.com.isaquebrb.customerchallenge.application.service;
 
 import br.com.isaquebrb.customerchallenge.adapter.annotation.UseCase;
-import br.com.isaquebrb.customerchallenge.core.persistence.UpdateCustomerPersistence;
+import br.com.isaquebrb.customerchallenge.application.persistence.UpdateCustomerPersistence;
 import br.com.isaquebrb.customerchallenge.core.service.UpdateCustomerUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

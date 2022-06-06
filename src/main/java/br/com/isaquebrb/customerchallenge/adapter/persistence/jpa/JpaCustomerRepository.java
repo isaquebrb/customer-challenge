@@ -1,6 +1,6 @@
-package br.com.isaquebrb.customerchallenge.adapter.repository;
+package br.com.isaquebrb.customerchallenge.adapter.persistence.jpa;
 
-import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

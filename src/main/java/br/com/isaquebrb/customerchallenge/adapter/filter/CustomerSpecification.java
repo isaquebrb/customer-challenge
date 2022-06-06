@@ -1,6 +1,6 @@
 package br.com.isaquebrb.customerchallenge.adapter.filter;
 
-import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 import org.springframework.data.jpa.domain.Specification;
 

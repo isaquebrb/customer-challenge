@@ -1,7 +1,8 @@
 package br.com.isaquebrb.customerchallenge.application.persistence;
 
-import br.com.isaquebrb.customerchallenge.adapter.repository.JpaCustomerRepository;
-import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.jpa.JpaCustomerRepository;
+import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.repository.CreateCustomerRepository;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,7 +45,7 @@ class CreateCustomerRepositoryTest {
 
         when(jpaCustomerRepository.save(any())).thenReturn(customerEntity);
 
-        Customer savedCustomer = createCustomerRepository.save(customer);
+        CustomerEntity savedCustomer = createCustomerRepository.save(customer);
 
         assertThat(savedCustomer.getId()).isEqualTo(customerEntity.getId());
         assertThat(savedCustomer.getName()).isEqualTo(customer.getName());

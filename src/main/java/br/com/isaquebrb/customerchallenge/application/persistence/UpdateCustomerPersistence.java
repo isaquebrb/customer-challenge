@@ -1,4 +1,4 @@
-package br.com.isaquebrb.customerchallenge.core.persistence;
+package br.com.isaquebrb.customerchallenge.application.persistence;
 
 public interface UpdateCustomerPersistence {
 

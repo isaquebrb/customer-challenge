@@ -1,5 +1,6 @@
-package br.com.isaquebrb.customerchallenge.adapter.controller;
+package br.com.isaquebrb.customerchallenge.adapter.controller.impl;
 
+import br.com.isaquebrb.customerchallenge.adapter.controller.CustomerControllerApi;
 import br.com.isaquebrb.customerchallenge.adapter.presenter.request.CreateCustomerRequest;
 import br.com.isaquebrb.customerchallenge.adapter.presenter.request.UpdateActivationRequest;
 import br.com.isaquebrb.customerchallenge.adapter.presenter.request.UpdateCustomerRequest;

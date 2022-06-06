@@ -1,7 +1,9 @@
 package br.com.isaquebrb.customerchallenge.application.persistence;
 
-import br.com.isaquebrb.customerchallenge.adapter.repository.JpaCustomerRepository;
-import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.jpa.JpaCustomerRepository;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.repository.GetCustomerRepository;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.repository.UpdateCustomerRepository;
+import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -10,9 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
-
-import static br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntityTest.getCustomerEntity;
+import static br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntityTest.getCustomerEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
@@ -27,6 +27,9 @@ class UpdateCustomerRepositoryTest {
     @Mock
     private JpaCustomerRepository jpaCustomerRepository;
 
+    @Mock
+    private GetCustomerRepository getCustomerRepository;
+
     @Captor
     private ArgumentCaptor<CustomerEntity> customerCaptor;
 
@@ -38,7 +41,7 @@ class UpdateCustomerRepositoryTest {
         String phone = "3435669988";
 
         CustomerEntity customerEntity = getCustomerEntity();
-        when(jpaCustomerRepository.findById(anyLong())).thenReturn(Optional.of(customerEntity));
+        when(getCustomerRepository.getById(anyLong())).thenReturn(customerEntity);
 
         updateCustomerRepository.update(155L, name, age, cellphone, phone);
 
@@ -55,7 +58,7 @@ class UpdateCustomerRepositoryTest {
         String email = "Random customer update";
 
         CustomerEntity customerEntity = getCustomerEntity();
-        when(jpaCustomerRepository.findById(anyLong())).thenReturn(Optional.of(customerEntity));
+        when(getCustomerRepository.getById(anyLong())).thenReturn(customerEntity);
 
         updateCustomerRepository.updateEmail(150L, email);
 
@@ -69,7 +72,7 @@ class UpdateCustomerRepositoryTest {
         Boolean active = false;
 
         CustomerEntity customerEntity = getCustomerEntity();
-        when(jpaCustomerRepository.findById(anyLong())).thenReturn(Optional.of(customerEntity));
+        when(getCustomerRepository.getById(anyLong())).thenReturn(customerEntity);
 
         updateCustomerRepository.updateActivation(150L, active);
 

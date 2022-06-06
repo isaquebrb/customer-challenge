@@ -16,17 +16,17 @@ services:
     restart: always
     ports:
       - "8081:8080"
-  app:
-    image: 'customer-challenge:latest'
-    build:
-      context: .
-    container_name: app
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/customer_challenge
-      - SPRING_DATASOURCE_USERNAME=customer
-      - SPRING_DATASOURCE_PASSWORD=challenge
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+  #app:
+  #  image: 'customer-challenge:latest'
+  #  build:
+  #    context: .
+  #  container_name: app
+  #  ports:
+  #    - "8080:8080"
+  #  depends_on:
+  #    - db
+  #  environment:
+  #    - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/customer_challenge
+  #    - SPRING_DATASOURCE_USERNAME=customer
+  #    - SPRING_DATASOURCE_PASSWORD=challenge
+  #    - SPRING_JPA_HIBERNATE_DDL_AUTO=none

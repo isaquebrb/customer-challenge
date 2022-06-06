@@ -1,8 +1,8 @@
 package br.com.isaquebrb.customerchallenge.application.persistence;
 
-import br.com.isaquebrb.customerchallenge.adapter.repository.JpaCustomerRepository;
-import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
-import br.com.isaquebrb.customerchallenge.core.domain.Customer;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.jpa.JpaCustomerRepository;
+import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.repository.GetCustomerRepository;
 import br.com.isaquebrb.customerchallenge.core.exception.NotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntityTest.getCustomerEntity;
+import static br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntityTest.getCustomerEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.when;
@@ -32,17 +32,17 @@ class GetCustomerRepositoryTest {
 
         when(jpaCustomerRepository.findById(1L)).thenReturn(Optional.of(customerEntity));
 
-        Customer customer = getCustomerRepository.getById(1L);
+        CustomerEntity customerFound = getCustomerRepository.getById(1L);
 
-        assertThat(customer.getId()).isEqualTo(customerEntity.getId());
-        assertThat(customer.getName()).isEqualTo(customerEntity.getName());
-        assertThat(customer.getAge()).isEqualTo(customerEntity.getAge());
-        assertThat(customer.getEmail()).isEqualTo(customerEntity.getEmail());
-        assertThat(customer.getCellphone()).isEqualTo(customerEntity.getCellphone());
-        assertThat(customer.getPhone()).isEqualTo(customerEntity.getPhone());
-        assertThat(customer.getActive()).isEqualTo(customerEntity.getActive());
-        assertThat(customer.getCreatedAt()).isEqualTo(customerEntity.getCreatedAt());
-        assertThat(customer.getUpdatedAt()).isEqualTo(customerEntity.getUpdatedAt());
+        assertThat(customerFound.getId()).isEqualTo(customerEntity.getId());
+        assertThat(customerFound.getName()).isEqualTo(customerEntity.getName());
+        assertThat(customerFound.getAge()).isEqualTo(customerEntity.getAge());
+        assertThat(customerFound.getEmail()).isEqualTo(customerEntity.getEmail());
+        assertThat(customerFound.getCellphone()).isEqualTo(customerEntity.getCellphone());
+        assertThat(customerFound.getPhone()).isEqualTo(customerEntity.getPhone());
+        assertThat(customerFound.getActive()).isEqualTo(customerEntity.getActive());
+        assertThat(customerFound.getCreatedAt()).isEqualTo(customerEntity.getCreatedAt());
+        assertThat(customerFound.getUpdatedAt()).isEqualTo(customerEntity.getUpdatedAt());
     }
 
     @Test

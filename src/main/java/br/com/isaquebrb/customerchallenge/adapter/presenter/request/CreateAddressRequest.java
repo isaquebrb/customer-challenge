@@ -1,11 +1,15 @@
 package br.com.isaquebrb.customerchallenge.adapter.presenter.request;
 
 import br.com.isaquebrb.customerchallenge.core.domain.Address;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Getter
-@Builder
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateAddressRequest {
 
     private String street;

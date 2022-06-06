@@ -1,4 +1,4 @@
-package br.com.isaquebrb.customerchallenge.adapter.repository.entity;
+package br.com.isaquebrb.customerchallenge.application.persistence.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package br.com.isaquebrb.customerchallenge.application.service;
 
-import br.com.isaquebrb.customerchallenge.core.persistence.UpdateCustomerPersistence;
+import br.com.isaquebrb.customerchallenge.application.persistence.UpdateCustomerPersistence;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

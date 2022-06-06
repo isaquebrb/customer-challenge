@@ -1,6 +1,5 @@
 package br.com.isaquebrb.customerchallenge.core.domain;
 
-import br.com.isaquebrb.customerchallenge.adapter.repository.entity.CustomerEntity;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
@@ -24,24 +23,4 @@ public class Customer extends BaseDomain {
         this.addresses.add(address);
         address.setCustomer(this);
     }
-
-    public CustomerEntity newEntity() {
-        CustomerEntity customerEntity = CustomerEntity.builder()
-                .name(name)
-                .age(age)
-                .email(email)
-                .cellphone(cellphone)
-                .phone(phone)
-                .active(active).build();
-
-        addresses.stream()
-                .map(adr -> adr.newEntity(customerEntity))
-                .forEach(customerEntity::addAddress);
-
-        return customerEntity;
-    }
-
-
-
-
 }
