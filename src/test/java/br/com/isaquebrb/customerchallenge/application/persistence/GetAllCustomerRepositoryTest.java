@@ -2,7 +2,7 @@ package br.com.isaquebrb.customerchallenge.application.persistence;
 
 import br.com.isaquebrb.customerchallenge.adapter.persistence.jpa.JpaCustomerRepository;
 import br.com.isaquebrb.customerchallenge.adapter.persistence.repository.GetAllCustomerRepository;
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

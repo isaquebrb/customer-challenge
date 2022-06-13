@@ -57,7 +57,7 @@ public interface CustomerControllerApi {
     ResponseEntity<SimplePage<GetCustomerResponse>> getAllCustomers(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
-            @RequestBody @Valid CustomerFilter customerFilter);
+            @RequestBody(required = false) @Valid CustomerFilter customerFilter);
 
     @Operation(summary = "Update customers name, age, cellphone and phone")
     @ApiResponses(value = {

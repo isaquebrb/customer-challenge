@@ -3,7 +3,7 @@ package br.com.isaquebrb.customerchallenge.adapter.persistence.repository;
 import br.com.isaquebrb.customerchallenge.adapter.annotation.PersistenceAdapter;
 import br.com.isaquebrb.customerchallenge.adapter.persistence.jpa.JpaCustomerRepository;
 import br.com.isaquebrb.customerchallenge.application.mapper.CustomerMapper;
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.application.persistence.CreateCustomerPersistence;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import lombok.RequiredArgsConstructor;

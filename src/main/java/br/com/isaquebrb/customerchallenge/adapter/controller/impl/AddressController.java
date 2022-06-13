@@ -30,7 +30,7 @@ public class AddressController implements AddressControllerApi {
     }
 
     @Override
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> updateAddress(Long addressId, CreateAddressRequest updateAddressRequest) {
         updateAddressUseCase.update(addressId, updateAddressRequest.newAddress());
         return ResponseEntity.ok().build();

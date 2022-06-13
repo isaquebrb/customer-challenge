@@ -1,7 +1,6 @@
 package br.com.isaquebrb.customerchallenge.application.service;
 
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
-import br.com.isaquebrb.customerchallenge.core.domain.Customer;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 import br.com.isaquebrb.customerchallenge.application.persistence.GetAllCustomerPersistence;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
-import java.util.Collection;
 import java.util.Collections;
 
 import static org.mockito.Mockito.times;

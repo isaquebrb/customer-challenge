@@ -1,7 +1,7 @@
 package br.com.isaquebrb.customerchallenge.application.service;
 
 import br.com.isaquebrb.customerchallenge.application.persistence.CreateCustomerPersistence;
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

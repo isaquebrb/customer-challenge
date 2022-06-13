@@ -2,7 +2,7 @@ package br.com.isaquebrb.customerchallenge.adapter.persistence.repository;
 
 import br.com.isaquebrb.customerchallenge.adapter.annotation.PersistenceAdapter;
 import br.com.isaquebrb.customerchallenge.adapter.persistence.jpa.JpaCustomerRepository;
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.application.persistence.GetCustomerPersistence;
 import br.com.isaquebrb.customerchallenge.core.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;

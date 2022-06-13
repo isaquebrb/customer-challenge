@@ -1,6 +1,6 @@
 package br.com.isaquebrb.customerchallenge.adapter.filter;
 
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -13,6 +13,9 @@ public interface CustomerSpecification {
     static Specification<CustomerEntity> getSpecification(CustomerFilter customerFilter) {
         List<Predicate> predicates = new ArrayList<>();
         return ((root, query, criteriaBuilder) -> {
+            if (customerFilter == null)
+                return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+
             if (customerFilter.getAge() != null) {
                 predicates.add(criteriaBuilder.equal(root.get("age"), customerFilter.getAge()));
             }

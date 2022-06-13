@@ -3,7 +3,7 @@ package br.com.isaquebrb.customerchallenge.application.persistence;
 import br.com.isaquebrb.customerchallenge.adapter.persistence.jpa.JpaCustomerRepository;
 import br.com.isaquebrb.customerchallenge.adapter.persistence.repository.GetCustomerRepository;
 import br.com.isaquebrb.customerchallenge.adapter.persistence.repository.UpdateCustomerRepository;
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
+import br.com.isaquebrb.customerchallenge.adapter.persistence.entity.CustomerEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;

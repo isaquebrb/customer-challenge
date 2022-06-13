@@ -1,7 +1,5 @@
 package br.com.isaquebrb.customerchallenge.adapter.persistence.entity;
 
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
-
 import java.time.LocalDateTime;
 import java.util.Random;
 

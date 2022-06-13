@@ -39,7 +39,7 @@ public interface AddressControllerApi {
             @ApiResponse(responseCode = "500", description = "Generic error",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = StandardErrorResponse.class)))})
-    ResponseEntity<Void> updateAddress(@PathVariable("/{id}") Long addressId,
+    ResponseEntity<Void> updateAddress(@PathVariable("id") Long addressId,
                                        @RequestBody @Valid CreateAddressRequest updateAddressRequest);
 
     @Operation(summary = "Delete address")
@@ -51,5 +51,5 @@ public interface AddressControllerApi {
             @ApiResponse(responseCode = "500", description = "Generic error",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = StandardErrorResponse.class)))})
-    ResponseEntity<Void> deleteAddress(@PathVariable("/{id}") Long addressId);
+    ResponseEntity<Void> deleteAddress(@PathVariable("id") Long addressId);
 }

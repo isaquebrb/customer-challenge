@@ -3,7 +3,6 @@ package br.com.isaquebrb.customerchallenge.application.service;
 import br.com.isaquebrb.customerchallenge.adapter.annotation.UseCase;
 import br.com.isaquebrb.customerchallenge.application.mapper.CustomerMapper;
 import br.com.isaquebrb.customerchallenge.application.persistence.GetAllCustomerPersistence;
-import br.com.isaquebrb.customerchallenge.application.persistence.entity.CustomerEntity;
 import br.com.isaquebrb.customerchallenge.core.domain.Customer;
 import br.com.isaquebrb.customerchallenge.core.filter.CustomerFilter;
 import br.com.isaquebrb.customerchallenge.core.pagination.SimplePage;
@@ -22,7 +21,6 @@ public class GetAllCustomerService implements GetAllCustomersUseCase {
     @Override
     public SimplePage<Customer> getAll(Integer page, Integer size, CustomerFilter customerFilter) {
         log.info("Searching customer page");
-
         Page<Customer> customerPage = getAllCustomerPersistence.getAll(page, size, customerFilter)
                 .map(CustomerMapper::toDomain);
 

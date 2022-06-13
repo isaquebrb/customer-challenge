@@ -1,4 +1,4 @@
-package br.com.isaquebrb.customerchallenge.application.persistence.entity;
+package br.com.isaquebrb.customerchallenge.adapter.persistence.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,4 +46,15 @@ public class AddressEntity extends BaseEntity {
     @Setter
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private CustomerEntity customer;
+
+    public void update(String street, Integer number, String city, String district,
+                       String state, String country, String zipCode) {
+        this.street = street;
+        this.number = number;
+        this.city = city;
+        this.district = district;
+        this.state = state;
+        this.country = country;
+        this.zipCode = zipCode;
+    }
 }
